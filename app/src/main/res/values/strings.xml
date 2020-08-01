@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Prokedex</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="pokemon_name">Pokemon</string>
+    <string name="title_pokedex">Pokedex</string>
+    <string name="pokemon_id">ID</string>
+    <string name="change_grid_view">Change grid view</string>
+</resources>
