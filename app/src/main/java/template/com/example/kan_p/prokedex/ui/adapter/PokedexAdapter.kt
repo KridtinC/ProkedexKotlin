@@ -1,11 +1,20 @@
 package template.com.example.kan_p.prokedex.ui.adapter
 
+import android.content.Context
+import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.Target
 import kotlinx.android.synthetic.main.item_pokedex.view.*
 import template.com.example.kan_p.prokedex.R
 import template.com.example.kan_p.prokedex.model.Pokemon
@@ -39,11 +48,12 @@ class PokedexAdapter(private val items: ArrayList<Pokemon>): RecyclerView.Adapte
                 } else {
                     val queryTxt = p0.toString().toLowerCase().trim()
                     for (item in items) {
-                        if (item.name.toLowerCase().contains(queryTxt)) {
+                        if (item.name.toLowerCase().contains(queryTxt) or item.id.toString().contains(queryTxt)) {
                             filteredData.add(item)
                         }
                     }
                 }
+                Log.i("Adapter", filteredData.toString())
                 return filterResults.also {
                     it.values = filteredData
                 }
@@ -61,9 +71,27 @@ class PokedexAdapter(private val items: ArrayList<Pokemon>): RecyclerView.Adapte
             itemView.apply {
                 pokemon_name.text = pokemon.name
                 pokemon_id.text = pokemon.id.toString()
+                Glide.with(itemView.context)
+                    .load("${context.getDir("pokemonImage", Context.MODE_PRIVATE).absolutePath}/Pokemon_${pokemon.id}.png")
+                    .listener(object : RequestListener<Drawable> {
+                        override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?, isFirstResource: Boolean): Boolean {
+                            Log.e("Adapter", e.toString())
+                            return false
+                        }
+
+                        override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
+                            Log.i("Adapter", "ready")
+                            return false
+                        }
+
+                    })
+                    .fitCenter()
+                    .placeholder(R.drawable.ic_dashboard_black_24dp)
+                    .into(pokemon_img)
+
             }
 
-//            Picasso.get().load(pokemon.avatarImage).into(itemView.imgMember)
+
 
         }
     }
