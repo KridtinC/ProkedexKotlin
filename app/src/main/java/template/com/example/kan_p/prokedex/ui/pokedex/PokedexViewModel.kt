@@ -1,6 +1,5 @@
 package template.com.example.kan_p.prokedex.ui.pokedex
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import template.com.example.kan_p.prokedex.model.Pokemon

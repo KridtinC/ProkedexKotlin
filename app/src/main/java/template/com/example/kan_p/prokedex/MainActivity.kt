@@ -31,24 +31,4 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.toolbar_menu,menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.change_grid_view -> {
-            Toast.makeText(this,"Change grid size",Toast.LENGTH_LONG).show()
-            recyclerView.layoutManager
-            recyclerView.apply {
-                layoutManager = GridLayoutManager(context, 1, GridLayoutManager.VERTICAL, false)
-            }
-            true
-        }
-
-        else -> {
-            super.onOptionsItemSelected(item)
-        }
-    }
 }
