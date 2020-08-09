@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pokemon_detail_navigation"
+    app:startDestination="@+id/navigation_pokemon_detail_base">
+
+    <fragment
+        android:id="@+id/navigation_pokemon_detail_base"
+        android:name="template.com.example.kan_p.prokedex.ui.pokemonDetail.BaseInfoFragment"
+        android:label="BaseInfoFragment"
+        tools:layout="@layout/fragment_pokemon_detail_base_info" />
+    <fragment
+        android:id="@+id/navigation_pokemon_detail_move"
+        android:name="template.com.example.kan_p.prokedex.ui.pokemonDetail.MoveFragment"
+        android:label="MoveFragment"
+        tools:layout="@layout/fragment_pokemon_detail_move"/>
+    <fragment
+        android:id="@+id/navigation_pokemon_detail_egg_group"
+        android:name="template.com.example.kan_p.prokedex.ui.pokemonDetail.EggGroupFragment"
+        android:label="EggGroupFragment"
+        tools:layout="@layout/fragment_pokemon_detail_egg_group"/>
+    <fragment
+        android:id="@+id/navigation_pokemon_detail_more"
+        android:name="template.com.example.kan_p.prokedex.ui.pokemonDetail.MoreFragment"
+        android:label="MoreFragment"
+        tools:layout="@layout/fragment_pokemon_detail_more"/>
+</navigation>

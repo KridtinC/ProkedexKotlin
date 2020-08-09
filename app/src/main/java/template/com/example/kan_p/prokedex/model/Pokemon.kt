@@ -4,6 +4,6 @@ data class Pokemon(
     val url: String,
     var id: Int,
     val name: String,
-    val type: ArrayList<String>,
-    val base: BaseStats
+    val type: ArrayList<TypeEnum>,
+    val baseStats: BaseStats
 )
